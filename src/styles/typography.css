@@ -1,0 +1,143 @@
+/**
+ * CULTR typography styles
+ * Source: Figma "CULTR" › 🎨 Design tokens › Typography System
+ * 클래스 이름은 Figma Text Style 이름(CULTR/Display/Hero → .t-display-hero)과 1:1로 대응합니다.
+ * line-height "Auto" 는 normal 로 옮겼고, letter-spacing 은 % 를 em 으로 환산했습니다.
+ */
+
+/* Display & headings */
+.t-display-hero {
+  font-family: var(--font-display);
+  font-weight: 400; /* Regular light */
+  font-size: 68px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.t-display-page {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 52px;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+.t-heading-section {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.t-data-metric {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: 0;
+}
+.t-heading-card {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+.t-heading-item {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: normal;
+  letter-spacing: 0;
+}
+.t-heading-faq {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: normal;
+  letter-spacing: 0;
+}
+
+/* Body, labels & utility */
+.t-body-large {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.75;
+  letter-spacing: 0;
+}
+.t-body-default {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.7;
+  letter-spacing: 0;
+}
+.t-body-compact {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: normal;
+  letter-spacing: 0;
+}
+.t-label-navigation {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 13px;
+  line-height: normal;
+  letter-spacing: 0;
+}
+.t-label-eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 13px;
+  line-height: normal;
+  letter-spacing: 0.015em;
+}
+.t-label-meta {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: normal;
+  letter-spacing: 0.012em;
+}
+.t-label-tag {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 11px;
+  line-height: normal;
+  letter-spacing: 0.008em;
+}
+.t-mono-label {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 9px;
+  line-height: normal;
+  letter-spacing: 0.015em;
+}
+.t-mono-value {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 9px;
+  line-height: normal;
+  letter-spacing: 0.01em;
+}
+.t-utility-body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: normal;
+  letter-spacing: 0;
+}
+.t-utility-heading {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: normal;
+  letter-spacing: 0.012em;
+}
+.t-brand-wordmark {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: 15px;
+  line-height: normal;
+  letter-spacing: 0.02em;
+}

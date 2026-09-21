@@ -1,0 +1,60 @@
+/**
+ * CULTR design tokens (Tailwind v4 @theme)
+ * Source: Figma "CULTR" › 🎨 Design tokens
+ * 여기 정의한 값은 Tailwind 클래스(bg-*, text-*, border-*)와 CSS 변수(var(--color-*)) 양쪽에서 쓸 수 있어요.
+ */
+@theme {
+  /* 기본 Tailwind 색상은 쓰지 않도록 비워요 */
+  --color-*: initial;
+
+  /* ───── action ───── */
+  --color-action-primary-background: #e8e4dc;
+  --color-action-primary-label: #0a0a0a;
+  --color-action-primary-hover: #d8d4cd;
+  --color-action-primary-pressed: #c0c0c0;
+  --color-action-secondary-background: #0a0a0a;
+  --color-action-secondary-hover: #1a1a1a;
+  --color-action-secondary-pressed: #2a2a2a;
+  --color-action-secondary-label: #e8e4dc;
+  --color-action-ghost-hover: #f5f5f5;
+  --color-action-disabled-background: #f5f5f5;
+  --color-action-disabled-label: #a3a3a3;
+
+  /* ───── background ───── */
+  --color-background-default: #ffffff;
+  --color-background-inverse: #0a0a0a;
+  --color-background-subtle: #fafafa;
+
+  /* ───── border ───── */
+  --color-border-default: #e0e0e0;
+  --color-border-strong: #a2a2a2;
+  --color-border-inverse: #2d2d2d;
+  --color-border-glass: rgb(255 255 255 / 0.4); /* 추정값 */
+
+  /* ───── surface ───── */
+  --color-surface-default: #ffffff;
+  --color-surface-inverse: #2a2a2a;
+  --color-surface-subtle: #f5f5f5;
+  --color-surface-warm: #e8e4dc;
+
+  /* ───── text ───── */
+  --color-text-inverse: #e8e4dc;
+  --color-text-inverse-muted: #d8d4cd;
+  --color-text-muted: #a3a3a3;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #8a8a8a;
+  --color-text-strong: #0a0a0a;
+  --color-text-on-glass: #ffffff;
+
+  /* ───── state layer ───── */
+  --color-state-on-primary-16: rgb(255 255 255 / 0.16);
+
+  /* ───── radius ───── */
+  --radius-xs: 2px;
+  --radius-sm: 3px;
+  --radius-pill: 30px;
+
+  /* ───── font ───── */
+  --font-sans: 'Noto Sans KR', system-ui, -apple-system, 'Apple SD Gothic Neo', sans-serif;
+  --font-display: 'Sprat', 'Noto Serif KR', Georgia, serif;
+}

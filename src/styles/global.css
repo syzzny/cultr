@@ -1,0 +1,33 @@
+/* 폰트: Noto Sans KR (Sprat 는 사용 환경에 맞게 별도로 불러오세요) */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+@import 'tailwindcss';
+@import './tokens.css';
+@import './typography.css';
+
+@font-face {
+  font-family: 'Sprat';
+  src: url('/fonts/Sprat-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+  background: var(--color-background-default);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+select {
+  font: inherit;
+}
+
