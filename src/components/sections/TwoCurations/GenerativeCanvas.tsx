@@ -26,62 +26,25 @@ out vec4 outColor;
 const vec3 BG_COLOR   = vec3(0.953, 0.949, 0.933);
 const vec3 LINE_COLOR = vec3(0.141);
 
-// ───────── 공통: 가로세로 비율 ─────────
-float aspect() {
-  return u_resolution.x / u_resolution.y;
-}
-
-// ───────── 1번 카드: 메타볼 ─────────
+// ───────── 1번 카드: 물결 간섭선 ─────────
 vec3 renderPanel1(vec2 uv) {
-  vec2 p = uv * 2.0 - 1.0;
-  p.x *= aspect(); // 원이 찌그러지지 않게 보정
-
-  float d = 0.0;
-  for (float i = 0.0; i < 5.0; i++) {
-    vec2 pos = 0.5 * vec2(sin(u_time * 0.7 + i * 1.2), cos(u_time * 0.5 + i * 0.8));
-    pos.x *= aspect(); // 궤도도 가로로 넓게
-    d += 0.08 / length(p - pos);
-  }
-  float m = smoothstep(0.48, 0.5, d);
-  return mix(BG_COLOR, LINE_COLOR, m);
+  vec2 p = uv * 10.0;
+  float d = sin(p.x * 0.5 + u_time) + sin(p.y * 0.5 + u_time * 0.8);
+  vec2 dist = vec2(sin(d + u_time), cos(d + u_time)) * 0.1;
+  float lines = sin((uv.x + dist.x) * 40.0) * sin((uv.y + dist.y) * 40.0);
+  return mix(BG_COLOR, LINE_COLOR, smoothstep(0.1, 0.0, abs(lines)) * 0.3);
 }
 
-// ───────── 2번 카드: fbm 등고선 ─────────
-float hash(vec2 p) {
-  p = fract(p * vec2(123.34, 456.21));
-  p += dot(p, p + 45.32);
-  return fract(p.x * p.y);
-}
-
-float noise(vec2 p) {
-  vec2 i = floor(p);
-  vec2 f = fract(p);
-  vec2 u = f * f * (3.0 - 2.0 * f);
-  float a = hash(i);
-  float b = hash(i + vec2(1.0, 0.0));
-  float c = hash(i + vec2(0.0, 1.0));
-  float d = hash(i + vec2(1.0, 1.0));
-  return mix(mix(a, b, u.x), mix(c, d, u.x), u.y);
-}
-
-float fbm(vec2 p) {
-  float v = 0.0;
-  float a = 0.5;
-  for (int i = 0; i < 5; i++) {
-    v += a * noise(p);
-    p *= 2.0;
-    a *= 0.5;
-  }
-  return v;
-}
-
+// ───────── 2번 카드: 쌍극자 필드 등고선 ─────────
 vec3 renderPanel2(vec2 uv) {
-  vec2 q = uv;
-  q.x *= aspect(); // 등고선이 늘어나지 않게 보정
-  vec2 p = q * 10.0 + u_time * 0.2;
-  float h = fbm(p);
-  float grid = abs(fract(h * 10.0) - 0.5) / fwidth(h * 10.0);
-  return mix(BG_COLOR, LINE_COLOR, (1.0 - smoothstep(0.0, 1.0, grid)) * 0.4);
+  vec2 p = uv * 2.0 - 1.0;
+  vec2 m1 = vec2(sin(u_time), cos(u_time)) * 0.5;
+  vec2 m2 = -m1;
+  vec2 v1 = p - m1;
+  vec2 v2 = p - m2;
+  float field = length(v1) / dot(v1, v1) - length(v2) / dot(v2, v2);
+  float grid = abs(fract(field * 5.0) - 0.5) / fwidth(field * 5.0);
+  return mix(BG_COLOR, LINE_COLOR, (1.0 - smoothstep(0.0, 1.2, grid)) * 0.5);
 }
 
 void main() {
@@ -159,7 +122,7 @@ export function GenerativeCanvas({ mode, className }: Props) {
     const draw = (timeS: number) => {
       resize();
       gl.uniform2f(uRes, canvas.width, canvas.height);
-      gl.uniform1f(uTime, timeS);
+      gl.uniform1f(uTime, timeS * 0.4);
       gl.uniform1i(uMode, mode === 'weekly' ? 0 : 1);
       gl.drawArrays(gl.TRIANGLES, 0, 6);
     };
