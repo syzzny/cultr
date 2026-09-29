@@ -3,13 +3,14 @@ import Link from 'next/link';
 import { buttonClassName } from '@/components/Button/Button';
 
 const NAV_LINKS = [
+  { href: '/about', label: 'CULTR?' },
   { href: '/explore', label: '탐색' },
   { href: '/archive', label: '아카이브' },
 ];
 
 export function Header() {
   return (
-    <header className="flex h-[58px] items-center justify-between border-b border-border-inverse bg-background-inverse px-5 md:h-[77px] md:px-20">
+    <header className="sticky top-0 z-50 flex h-[58px] items-center justify-between border-b border-border-inverse bg-background-inverse px-5 md:h-[77px] md:px-20">
       <Link href="/" className="inline-flex" aria-label="CULTR 홈">
         <Image
           src="/logo-white-pc.svg"

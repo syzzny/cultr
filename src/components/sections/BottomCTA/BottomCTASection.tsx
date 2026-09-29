@@ -4,7 +4,7 @@ import { GrowthAsciiCanvas } from './GrowthAsciiCanvas';
 
 export function BottomCTASection() {
   return (
-    <section className="flex flex-col items-center bg-background-inverse">
+    <section className="flex flex-col items-center bg-[#000000]">
       <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-5 px-5 pt-14 md:flex-row md:items-center md:justify-center md:gap-0 md:px-20 md:py-0">
         {/* 왼쪽: 헤드라인 + 폼 */}
         <div className="flex w-full flex-col items-start gap-5 md:w-auto md:flex-1 md:gap-8">

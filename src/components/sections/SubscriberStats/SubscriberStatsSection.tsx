@@ -78,21 +78,31 @@ const PALETTES = [
   },
 ];
 
-function StatCell({ stat, palette }: { stat: Stat; palette: (typeof PALETTES)[number] }) {
-  const [isHovered, setIsHovered] = useState(false);
-
+function StatCell({
+  stat,
+  palette,
+  isActive,
+  onEnter,
+  onLeave,
+}: {
+  stat: Stat;
+  palette: (typeof PALETTES)[number];
+  isActive: boolean;
+  onEnter: () => void;
+  onLeave: () => void;
+}) {
   return (
     <div
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={onEnter}
+      onMouseLeave={onLeave}
       className="relative flex h-[190px] flex-col justify-between overflow-hidden border-b border-r border-border-default bg-surface-default p-10"
     >
-      {/* 호버 애니메이션: 평소엔 투명, 호버하면 서서히 나타남 */}
+      {/* 배경 애니메이션: 기본값은 activeIndex=0인 칸만 켜져있고, 다른 칸에 hover하면 그쪽으로 넘어감 */}
       <HoverNoiseCanvas
-        active={isHovered}
+        active={isActive}
         colors={palette}
         className={`absolute inset-0 h-full w-full transition-opacity duration-300 ${
-          isHovered ? 'opacity-100' : 'opacity-0'
+          isActive ? 'opacity-100' : 'opacity-0'
         }`}
       />
 
@@ -104,40 +114,42 @@ function StatCell({ stat, palette }: { stat: Stat; palette: (typeof PALETTES)[nu
           width={stat.iconSize}
           height={stat.iconSize}
           className={`transition-[filter] duration-300 ${
-            isHovered ? 'invert brightness-0 invert' : ''
+            isActive ? 'invert brightness-0 invert' : ''
           }`}
         />
         <p
-  className={`text-[40px] font-light leading-none transition-colors duration-300 ${
-    isHovered ? 'text-[#ffffff]' : 'text-text-primary'
-  }`}
->
-  {stat.value}
-</p>
+          className={`text-[40px] font-light leading-none transition-colors duration-300 ${
+            isActive ? 'text-[#ffffff]' : 'text-text-primary'
+          }`}
+        >
+          {stat.value}
+        </p>
       </div>
 
       {/* 라벨 + 설명 */}
-<div className="relative z-10 flex w-full flex-col gap-1.5 text-[13px]">
-  <p
-    className={`transition-colors duration-300 ${
-      isHovered ? 'text-[#ffffff]' : 'text-text-primary'
-    }`}
-  >
-    {stat.label}
-  </p>
-  <p
-    className={`transition-colors duration-300 ${
-      isHovered ? 'text-[#ffffff]/65' : 'text-text-secondary'
-    }`}
-  >
-    {stat.description}
-  </p>
-</div>
+      <div className="relative z-10 flex w-full flex-col gap-1.5 text-[13px]">
+        <p
+          className={`transition-colors duration-300 ${
+            isActive ? 'text-[#ffffff]' : 'text-text-primary'
+          }`}
+        >
+          {stat.label}
+        </p>
+        <p
+          className={`transition-colors duration-300 ${
+            isActive ? 'text-[#ffffff]/65' : 'text-text-secondary'
+          }`}
+        >
+          {stat.description}
+        </p>
+      </div>
     </div>
   );
 }
 
 export function SubscriberStatsSection() {
+  const [activeIndex, setActiveIndex] = useState(0); // 기본값: 첫 번째 칸이 켜져있는 상태
+
   return (
     <section className="hidden bg-surface-default md:flex md:items-center md:justify-center">
       <div className="mx-auto flex w-full max-w-[1440px] items-stretch px-20 py-[100px]">
@@ -158,7 +170,14 @@ export function SubscriberStatsSection() {
         {/* 통계 2x2 그리드 */}
         <div className="grid flex-1 grid-cols-2 border border-l-0 border-border-default">
           {STATS.map((stat, i) => (
-            <StatCell key={stat.label} stat={stat} palette={PALETTES[i]} />
+            <StatCell
+              key={stat.label}
+              stat={stat}
+              palette={PALETTES[i]}
+              isActive={i === activeIndex}
+              onEnter={() => setActiveIndex(i)}
+              onLeave={() => setActiveIndex(0)}
+            />
           ))}
         </div>
       </div>

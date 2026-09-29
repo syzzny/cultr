@@ -2,8 +2,10 @@
 
 import { useEffect, useRef } from 'react';
 
+export type GenerativeMode = 'weekly' | 'monthly';
+
 type Props = {
-  mode: 'weekly' | 'monthly';
+  mode: GenerativeMode;
   className?: string;
 };
 

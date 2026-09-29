@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 type FaqItem = {
   question: string;
@@ -42,14 +43,13 @@ function FaqAccordionItem({ item, defaultOpen = false }: { item: FaqItem; defaul
           {item.question}
         </p>
         <span className="relative flex size-6 shrink-0 items-center justify-center rounded-full bg-surface-subtle">
-          {/* 가로선: 항상 표시 (−) */}
-          <span className="absolute h-[1.5px] w-3.5 bg-text-primary" />
-          {/* 세로선: 접혀있을 때만 표시 → +가 됨 */}
-          <span
-            className={`absolute h-[1.5px] w-3.5 rotate-90 bg-text-primary transition-transform duration-200 ${
-              isOpen ? 'scale-y-0' : 'scale-y-100'
-            }`}
-          />
+          <Image
+            src={isOpen ? 'images/icon-minus.svg' : 'images/icon-plus.svg'}
+            alt = ""
+            width={16}
+            height={16}
+            >
+          </Image>
         </span>
       </button>
 

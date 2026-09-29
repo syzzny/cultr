@@ -1,55 +1,30 @@
 import Image from 'next/image';
 import { TestimonialLoop } from '@/components/sections/Subscribe/TestimonialLoop';
-
-
+import { OrbitAnimation } from '@/components/sections/Subscribe/OrbitAnimation';
+import { SubscribeForm } from '@/components/sections/Subscribe/SubscribeForm';
 
 export default function SubscribePage() {
   return (
-    <section className="flex flex-col items-center bg-[#fafafa]">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-10 px-5 py-14 md:gap-[60px] md:px-20 md:py-[110px]">
-    <TestimonialLoop />
-
-
-
-        {/* 구독 소개 */}
-        <div className="flex flex-col items-center gap-4 text-center">
-          <h1 className="max-w-[600px] break-keep text-[28px] leading-[1.2] tracking-[-0.4px] text-text-primary md:text-[52px] md:leading-[1.1] md:tracking-[-0.78px]">
-            매주, 당신의 문화생활을 위한 영감
-          </h1>
-          <p className="max-w-[480px] text-[14px] leading-[1.6] text-text-secondary md:text-[16px] md:leading-[1.75]">
-            CULTR 에디터가 엄선한 전시, 공연, 콘서트 소식과 관람 팁을 매주 화요일 무료로 보내드립니다.
-          </p>
-        </div>
+    <section className="flex flex-col items-center gap-16 bg-[#fafafa] px-5 py-14 md:gap-[100px] md:px-20 md:pb-[120px] md:pt-[110px]">
+      <div className="mx-auto flex w-full max-w-[1000px] flex-col items-center gap-16 md:gap-[80px]">
+        <TestimonialLoop />
 
         {/* 구독 양식 */}
-        <div className="flex w-full max-w-[420px] flex-col items-center gap-5 rounded-[20px] bg-[#ffffff] p-7">
-          <Image
-            src="/images/subscribe-blob.png"
-            alt=""
-            width={120}
-            height={120}
-          />
-          <div className="flex flex-col items-center gap-1 text-center">
-            <h2 className="text-[26px] font-bold text-text-primary">구독 시작하기</h2>
-            <p className="text-[14px] text-text-secondary">매주 화요일, 문화생활이 메일함에</p>
+        <div className="flex w-full max-w-[420px] flex-col items-center gap-6 rounded-[20px] bg-[#ffffff] p-7">
+          <div className="flex w-full flex-col items-start gap-2">
+            <h1 className="break-keep text-[22px] font-bold leading-[1.3] text-text-primary md:text-[26px]">
+              매주 당신의 문화생활을 위한 영감
+            </h1>
+            <p className="break-keep text-[14px] leading-[1.7] text-text-secondary">
+              CULTR 에디터가 엄선한 전시, 공연, 콘서트 소식과 관람 팁을 매주 화요일 무료로 보내드립니다.
+            </p>
           </div>
-          <form className="flex w-full items-center gap-2">
-            <input
-              type="email"
-              placeholder="이메일 주소를 입력하세요"
-              className="w-full flex-1 rounded-[12px] bg-[#f5f5f5] px-5 py-3 text-[14px] text-text-primary placeholder:text-text-secondary focus:outline-none"
-            />
-            <button
-              type="submit"
-              aria-label="구독하기"
-              className="flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#1a1a1a]"
-            >
-              <PaperPlaneIcon className="size-4 text-[#ffffff]" />
-            </button>
-          </form>
-          <p className="text-center text-[12px] leading-[1.5] text-[#c0c0c0]">
-            구독 신청 시 개인정보 수집 및 이용에 동의하게 됩니다. 언제든 구독을 해지할 수 있습니다.
-          </p>
+
+          <OrbitAnimation className='size-[120px]'/>
+
+          <div className="flex w-full flex-col gap-2">
+            <SubscribeForm></SubscribeForm>
+          </div>
         </div>
       </div>
     </section>

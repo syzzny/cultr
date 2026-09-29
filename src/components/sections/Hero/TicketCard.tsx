@@ -11,11 +11,11 @@ type TicketRow = {
 };
 
 const INFO_ROWS: TicketRow[] = [
-  { label: 'TYPE', value: 'GENERAL ADMISSION' },
-  { label: 'ACCESS', value: 'ALL ZONES', webOnly: true, spaceAfter: true },
-  { label: 'DATE', value: '12.11.2024' },
+  { label: 'TYPE', value: 'WEEKLY PICK' },
+  { label: 'ACCESS', value: "EDITOR'S CHOICE", webOnly: true, spaceAfter: true },
+  { label: 'DATE', value: '2026.09.30' },
   { label: 'VENUE', value: 'KRAFTWERK SECTOR B' },
-  { label: 'CITY', value: 'BERLIN', webOnly: true },
+  { label: 'CITY', value: '.SEOUL', webOnly: true },
 ];
 
 const ACT_ROWS: TicketRow[] = [
@@ -51,9 +51,9 @@ export function TicketCard() {
           aria-hidden="true"
           className="pointer-events-none absolute left-6 top-6 z-10 font-mono text-[0.7rem] leading-[1.4] tracking-[2px] text-text-inverse opacity-80"
         >
-          <span className="block">S Y M M E T R Y</span>
-          <span className="block pl-6">B R E A K I N G</span>
-          <span className="mt-2 block pl-2 text-[0.6rem] opacity-50">A U D I O V I S U A L</span>
+          <span className="block">C U L T R</span>
+          <span className="block pl-6">W E E K L Y</span>
+          {/* <span className="mt-2 block pl-2 text-[0.6rem] opacity-50">A U D I O V I S U A L</span> */}
         </div>
       </div>
 
@@ -79,11 +79,11 @@ export function TicketCard() {
         />
 
         <div className="flex flex-col gap-1.5 md:gap-2 md:border-t md:border-text-inverse md:pb-6 md:pt-4">
-          <p className="opacity-90">SYMMETRY BREAKING ■ VOL. 04</p>
+          <p className="opacity-90">CULTR WEEKLY ■ VOL. 04</p>
           <div className="flex items-start justify-between text-[8px] opacity-40 md:text-[9px]">
             <p>ID: 0029384-A</p>
             <p>
-              VALID ON ENTRY<span className="hidden md:inline"> ONLY</span>
+              SENT<span className="hidden md:inline"> EVERY TUESDAY</span>
             </p>
           </div>
         </div>

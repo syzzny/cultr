@@ -18,7 +18,7 @@ type ExploreItem = {
 const ITEMS: ExploreItem[] = [
   {
     category: '전시',
-    title: '2024 현대미술사: 시간의 조각',
+    title: '2024 현대미술사:시간의 조각',
     date: '2024.12.12',
     venue: '예술의전당 오페라하우스',
     image: '/images/weekly-1.jpg',
